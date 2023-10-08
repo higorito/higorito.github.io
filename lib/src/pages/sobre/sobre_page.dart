@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio_higor/src/pages/sobre/texto_ver_mais.dart';
+import 'package:portfolio_higor/src/pages/tecnologias/tecnologias_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SobrePage extends StatelessWidget {
@@ -10,6 +12,8 @@ class SobrePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final tamanho = mediaQuery.size;
     return Container(
       padding: const EdgeInsets.only(left: 12, right: 12, bottom: 6, top: 20),
       height: MediaQuery.of(context).size.height + 50,
@@ -43,14 +47,23 @@ class SobrePage extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Expanded(
-                    flex: 5,
-                    child: Container(
-                      child: Image.asset(
-                        'assets/images/eu.jpg',
-                      ),
-                    ),
-                  ),
+                  (tamanho.width > 600)
+                      ? Expanded(
+                          flex: 5,
+                          child: Container(
+                            child: Image.asset(
+                              'assets/images/eu.jpg',
+                            ),
+                          ),
+                        )
+                      : Expanded(
+                          flex: 2,
+                          child: Container(
+                            child: Image.asset(
+                              'assets/images/eu.jpg',
+                            ),
+                          ),
+                        ),
                   const SizedBox(
                     height: 20,
                   ),
@@ -61,7 +74,14 @@ class SobrePage extends StatelessWidget {
                         Flexible(
                           flex: 3,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const TecnologiasPage()),
+                              );
+                            },
                             style: ElevatedButton.styleFrom(
                               elevation: 5,
                               foregroundColor: Colors.black,
@@ -73,25 +93,38 @@ class SobrePage extends StatelessWidget {
                                   width: 2.0,
                                 ),
                               ),
-                              minimumSize: const Size(150, 60),
+                              minimumSize: const Size(80, 60),
                               maximumSize: const Size(250, 80),
                             ),
-                            child: const Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
                                   'Acessar Tecnologias',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 18,
-                                  ),
+                                  style: (tamanho.width > 600)
+                                      ? const TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 18,
+                                        )
+                                      : const TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 13,
+                                        ),
                                 ),
-                                FaIcon(
-                                  FontAwesomeIcons.arrowRight,
-                                  size: 20,
-                                  color: Colors.black,
-                                ),
+                                (tamanho.width > 600)
+                                    ? const FaIcon(
+                                        FontAwesomeIcons.arrowRight,
+                                        size: 20,
+                                        color: Colors.black,
+                                      )
+                                    : const FaIcon(
+                                        FontAwesomeIcons.arrowRight,
+                                        size: 12,
+                                        color: Colors.black,
+                                      ),
                               ],
                             ),
                           ),
@@ -99,15 +132,21 @@ class SobrePage extends StatelessWidget {
                         const SizedBox(
                           height: 8,
                         ),
-                        const Flexible(
+                        Flexible(
                           flex: 1,
                           child: Text(
                             "Entre em contato comigo!",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.w500,
-                            ),
+                            style: (tamanho.width > 600)
+                                ? const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.w500,
+                                  )
+                                : const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                           ),
                         ),
                         const SizedBox(
@@ -203,29 +242,29 @@ class SobrePage extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Sobre",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 30,
-                          color: Colors.white),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      "Comecei a programar em 2017, no técnico em Mecatrônica, onde aprendi a programar em C. Em 2020, comecei a faculdade de Engenharia de Computação onde aprendi a programar em C++, Java, Python, entre outras linguagens. A faculdade me proporcionou um conhecimento mais aprofundado em lógica, programação, paradigmas, projetos, e me fez gostar ainda mais da área. \n\nAtualmente estou estudando Flutter, para desenvolvimento de aplicativos mobile. Pretendo me especializar em desenvolvimento mobile, e futuramente integrar o incrível framework Flutter com a área de IoT e visão computacional. \n\nMeu foco é aprender e aprimorar minhas habilidades, como usar o Flutter para desenvolver aplicativos para a web como este portfólio feito 100% em Flutter.",
-                      style: TextStyle(
-                        color: Colors.grey[300],
-                        fontSize: 16,
-                      ),
-                    ),
-                  ],
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Sobre",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 30,
+                        color: Colors.white),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  (tamanho.width > 600)
+                      ? Text(
+                          "Comecei a programar em 2017, no técnico em Mecatrônica, onde aprendi a programar em C. Em 2020, comecei a faculdade de Engenharia de Computação onde aprendi a programar em C++, Java, Python, entre outras linguagens. A faculdade me proporcionou um conhecimento mais aprofundado em lógica, programação, paradigmas, projetos, e me fez gostar ainda mais da área. \n\nAtualmente estou estudando Flutter, para desenvolvimento de aplicativos mobile. Pretendo me especializar em desenvolvimento mobile, e futuramente integrar o incrível framework Flutter com a área de IoT e visão computacional. \n\nMeu foco é aprender e aprimorar minhas habilidades, como usar o Flutter para desenvolver aplicativos para a web como este portfólio feito 100% em Flutter.",
+                          style: TextStyle(
+                            color: Colors.grey[300],
+                            fontSize: 16,
+                          ),
+                        )
+                      : const TextoVerMais(),
+                ],
               ),
             ),
           ],

@@ -9,14 +9,26 @@ class CardGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 10, // Você pode ajustar o número de colunas aqui
-      ),
-      itemCount: cards.length,
-      itemBuilder: (context, index) {
-        return cards[index];
-      },
-    );
+    final mediaQuery = MediaQuery.of(context);
+    final tamanho = mediaQuery.size;
+    return (tamanho.width > 600)
+        ? GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 9, // Você pode ajustar o número de colunas aqui
+            ),
+            itemCount: cards.length,
+            itemBuilder: (context, index) {
+              return cards[index];
+            },
+          )
+        : GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3, // Você pode ajustar o número de colunas aqui
+            ),
+            itemCount: cards.length,
+            itemBuilder: (context, index) {
+              return cards[index];
+            },
+          );
   }
 }
