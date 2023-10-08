@@ -25,8 +25,16 @@ class SobrePage extends StatelessWidget {
           right: MediaQuery.of(context).size.width * 0.1,
         ),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(16),
           color: const Color(0xFF484175),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.6),
+              spreadRadius: 1,
+              blurRadius: 3,
+              offset: const Offset(0, 3),
+            ),
+          ],
         ),
         padding: const EdgeInsets.all(20),
         child: Row(
@@ -36,7 +44,7 @@ class SobrePage extends StatelessWidget {
               child: Column(
                 children: [
                   Expanded(
-                    flex: 6,
+                    flex: 5,
                     child: Container(
                       child: Image.asset(
                         'assets/images/eu.jpg',
@@ -55,12 +63,13 @@ class SobrePage extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.greenAccent,
-                              backgroundColor: const Color(0Xff4F9C4E),
+                              elevation: 5,
+                              foregroundColor: Colors.black,
+                              backgroundColor: Colors.greenAccent,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12.0),
                                 side: const BorderSide(
-                                  color: Colors.greenAccent,
+                                  color: Colors.black,
                                   width: 2.0,
                                 ),
                               ),
@@ -73,15 +82,15 @@ class SobrePage extends StatelessWidget {
                                 Text(
                                   'Acessar Tecnologias',
                                   style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w500,
                                     fontSize: 18,
                                   ),
                                 ),
                                 FaIcon(
                                   FontAwesomeIcons.arrowRight,
                                   size: 20,
-                                  color: Colors.white,
+                                  color: Colors.black,
                                 ),
                               ],
                             ),
@@ -101,6 +110,9 @@ class SobrePage extends StatelessWidget {
                             ),
                           ),
                         ),
+                        const SizedBox(
+                          height: 8,
+                        ),
                         Flexible(
                           flex: 2,
                           child: Row(
@@ -108,8 +120,16 @@ class SobrePage extends StatelessWidget {
                             children: [
                               Container(
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFF7064B5),
+                                  color: const Color.fromARGB(255, 49, 42, 85),
                                   borderRadius: BorderRadius.circular(50),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.5),
+                                      spreadRadius: 1,
+                                      blurRadius: 4,
+                                      offset: const Offset(0, 3),
+                                    ),
+                                  ],
                                 ),
                                 child: IconButton(
                                   onPressed: () {
@@ -126,8 +146,16 @@ class SobrePage extends StatelessWidget {
                               ),
                               Container(
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFF7064B5),
+                                  color: const Color.fromARGB(255, 49, 42, 85),
                                   borderRadius: BorderRadius.circular(50),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.5),
+                                      spreadRadius: 1,
+                                      blurRadius: 4,
+                                      offset: const Offset(0, 3),
+                                    ),
+                                  ],
                                 ),
                                 child: IconButton(
                                   onPressed: () {
@@ -144,8 +172,16 @@ class SobrePage extends StatelessWidget {
                               ),
                               Container(
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFF7064B5),
+                                  color: const Color.fromARGB(255, 49, 42, 85),
                                   borderRadius: BorderRadius.circular(50),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.5),
+                                      spreadRadius: 1,
+                                      blurRadius: 4,
+                                      offset: const Offset(0, 3),
+                                    ),
+                                  ],
                                 ),
                                 child: IconButton(
                                   onPressed: () {
