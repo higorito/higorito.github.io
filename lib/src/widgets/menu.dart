@@ -1,23 +1,33 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio_higor/main.dart';
+import 'package:portfolio_higor/src/home_page.dart';
 import 'package:portfolio_higor/src/widgets/dropdownmenu.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Menu extends StatelessWidget {
+class Menu extends StatefulWidget {
   final ValueChanged<int> onSelecionado;
 
   Menu({super.key, required this.onSelecionado});
 
+  @override
+  State<Menu> createState() => _MenuState();
+}
+
+class _MenuState extends State<Menu> {
   final Uri _urlGit = Uri.parse('https://github.com/higorito');
+
   final Uri _urlLin = Uri.parse('linkedin.com/in/higor-pereira-comp/');
+
+  bool isDarkTheme = false; // Variável de estado para controlar o tema
 
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final tamanho = mediaQuery.size;
     return Container(
-      color: const Color(0xFF413A69),
+      // color: const Color(0xFF413A69),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(22, 6, 22, 12),
         child: (tamanho.width > 600)
@@ -56,39 +66,46 @@ class Menu extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         TextButton(
-                            onPressed: () => onSelecionado(1),
+                            onPressed: () => widget.onSelecionado(1),
                             child: const Text(
                               'Home',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 18),
+                              style: TextStyle(fontSize: 18),
                             )),
                         TextButton(
-                            onPressed: () => onSelecionado(2),
+                            onPressed: () => widget.onSelecionado(2),
                             child: const Text(
                               'Sobre',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 18),
+                              style: TextStyle(fontSize: 18),
                             )),
                         TextButton(
-                            onPressed: () => onSelecionado(3),
+                            onPressed: () => widget.onSelecionado(3),
                             child: const Text(
                               'Projetos',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 18),
+                              style: TextStyle(fontSize: 18),
                             )),
                         TextButton(
-                            onPressed: () => onSelecionado(4),
+                            onPressed: () => widget.onSelecionado(4),
                             child: const Text(
                               'Contato',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 18),
+                              style: TextStyle(fontSize: 18),
                             )),
                         IconButton(
-                            onPressed: () {
-                              // ignore: avoid_print
-                              print("mudar tema dps");
-                            },
-                            icon: const Icon(Icons.sunny)),
+                          onPressed: () {
+                            // Alterar o tema aqui
+                            if (Theme.of(context).brightness ==
+                                Brightness.light) {
+                              // Mudar para o tema escuro
+                              ThemeManager.changeTheme(ThemeData.dark());
+                            } else {
+                              // Mudar para o tema claro
+                              ThemeManager.changeTheme(ThemeData.light());
+                            }
+                          },
+                          icon: Icon(
+                              Theme.of(context).brightness == Brightness.light
+                                  ? Icons.nightlight_round
+                                  : Icons.wb_sunny),
+                        )
                       ],
                     ),
                   ),
@@ -101,7 +118,6 @@ class Menu extends StatelessWidget {
                         },
                         icon: const FaIcon(
                           FontAwesomeIcons.github,
-                          color: Colors.white,
                         ),
                       ),
                       IconButton(
@@ -110,7 +126,7 @@ class Menu extends StatelessWidget {
                         },
                         icon: const FaIcon(
                           FontAwesomeIcons.linkedinIn,
-                          color: Colors.white,
+                          //
                         ),
                       )
                     ],
@@ -120,7 +136,7 @@ class Menu extends StatelessWidget {
             : Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  DropdownMenuCustom(onSelecionado: onSelecionado),
+                  DropdownMenuCustom(onSelecionado: widget.onSelecionado),
                   AnimatedTextKit(
                     animatedTexts: [
                       TypewriterAnimatedText(
@@ -145,16 +161,14 @@ class Menu extends StatelessWidget {
                         },
                         icon: FaIcon(
                           FontAwesomeIcons.github,
-                          color: Colors.white,
                         ),
                       ),
                       IconButton(
                         onPressed: () {
                           _launchUrl(_urlLin);
                         },
-                        icon: FaIcon(
+                        icon: const FaIcon(
                           FontAwesomeIcons.linkedinIn,
-                          color: Colors.white,
                         ),
                       )
                     ],

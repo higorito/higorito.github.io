@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-          color: const Color(0xFF413A69),
+          // color: const Color(0xFF413A69),
           child: Column(
             children: [
               Menu(

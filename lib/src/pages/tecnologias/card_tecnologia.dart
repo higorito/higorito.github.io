@@ -13,8 +13,9 @@ class CardWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(8),
       child: Card(
-        shadowColor: Colors.white.withOpacity(0.4),
-        color: const Color(0xFF413A69),
+        shadowColor: Theme.of(context).colorScheme.onPrimary.withOpacity(0.4),
+        // color: const Color(0xFF413A69),
+        color: Theme.of(context).colorScheme.onSecondary,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
@@ -32,9 +33,10 @@ class CardWidget extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 nome,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.secondary,
                 ),
                 textAlign: TextAlign.center,
               ),

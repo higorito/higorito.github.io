@@ -12,8 +12,8 @@ class TecnologiasPage extends StatelessWidget {
       height: MediaQuery.of(context).size.height + 50,
       width: double.infinity,
       decoration: const BoxDecoration(
-        color: Color(0xFF413A69),
-      ),
+          // color: Color(0xFF413A69),
+          ),
       child: const Column(
         children: [
           Expanded(
@@ -22,7 +22,7 @@ class TecnologiasPage extends StatelessWidget {
               'Habilidades',
               style: TextStyle(
                   fontSize: 48,
-                  color: Colors.white,
+                  // color: Colors.white,
                   fontWeight: FontWeight.bold),
             ),
           ),

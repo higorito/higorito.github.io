@@ -26,7 +26,7 @@ class _PartHomePageState extends State<PartHomePage> {
     return Container(
       padding: const EdgeInsets.only(left: 22, right: 22, bottom: 6, top: 20),
       height: altura,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.elliptical(250, 60),
           bottomRight: Radius.elliptical(250, 60),
@@ -35,10 +35,8 @@ class _PartHomePageState extends State<PartHomePage> {
           begin: Alignment.bottomCenter,
           end: Alignment.topCenter,
           colors: [
-            // Theme.of(context).colorScheme.primary,
-            // Theme.of(context).colorScheme.secondary,
-            Color(0xFF6E44BB),
-            Color(0xFF413A69),
+            Color(0xFF016a6d),
+            Color(0xFF043e52),
           ],
         ),
       ),

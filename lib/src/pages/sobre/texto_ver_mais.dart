@@ -21,7 +21,7 @@ class _TextoVerMaisState extends State<TextoVerMais> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: const Color(0xFF413A69),
+          // backgroundColor: Theme.of(context).colorScheme.secondary,
           title: const Text('Sobre mim'),
           content: Text(
             "Comecei a programar em 2017, no técnico em Mecatrônica, onde aprendi a programar em C. Em 2020, comecei a faculdade de Engenharia de Computação onde aprendi a programar em C++, Java, Python, entre outras linguagens. A faculdade me proporcionou um conhecimento mais aprofundado em lógica, programação, paradigmas, projetos, e me fez gostar ainda mais da área. \n\nAtualmente estou estudando Flutter, para desenvolvimento de aplicativos mobile. Pretendo me especializar em desenvolvimento mobile, e futuramente integrar o incrível framework Flutter com a área de IoT e visão computacional. \n\nMeu foco é aprender e aprimorar minhas habilidades, como usar o Flutter para desenvolver aplicativos para a web como este portfólio feito 100% em Flutter.",
@@ -52,9 +52,9 @@ class _TextoVerMaisState extends State<TextoVerMais> {
         children: <Widget>[
           Text(
             'Sou estudante de Engenharia de Computação, e desenvolvedor Flutter. Clique no botão abaixo para saber mais sobre mim.',
-            textAlign: TextAlign.start,
+            textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.grey[300],
+              color: Theme.of(context).colorScheme.secondary,
               fontSize: 16,
             ),
           ),

@@ -19,8 +19,8 @@ class SobrePage extends StatelessWidget {
       height: MediaQuery.of(context).size.height + 50,
       width: double.infinity,
       decoration: const BoxDecoration(
-        color: Color(0xFF413A69),
-      ),
+          // color: Color(0xFF413A69),
+          ),
       child: Container(
         margin: EdgeInsets.only(
           top: MediaQuery.of(context).size.height * 0.15,
@@ -30,13 +30,14 @@ class SobrePage extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: const Color(0xFF484175),
+          // color: const Color(0xFF484175),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.6),
+              // color: Colors.black.withOpacity(0.6),
+              color: Theme.of(context).colorScheme.onSecondary,
               spreadRadius: 1,
-              blurRadius: 3,
-              offset: const Offset(0, 3),
+              blurRadius: 2,
+              offset: const Offset(0, 2),
             ),
           ],
         ),
@@ -45,226 +46,136 @@ class SobrePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Expanded(
-              child: Column(
-                children: [
-                  (tamanho.width > 600)
-                      ? Expanded(
-                          flex: 5,
-                          child: Container(
-                            child: Image.asset(
-                              'assets/images/eu.jpg',
-                            ),
-                          ),
-                        )
-                      : Expanded(
-                          flex: 2,
-                          child: Container(
-                            child: Image.asset(
-                              'assets/images/eu.jpg',
-                            ),
-                          ),
-                        ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Expanded(
-                    flex: 3,
-                    child: Column(
-                      children: [
-                        Flexible(
-                          flex: 3,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const TecnologiasPage()),
-                              );
-                            },
-                            style: ElevatedButton.styleFrom(
-                              elevation: 5,
-                              foregroundColor: Colors.black,
-                              backgroundColor: Colors.greenAccent,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12.0),
-                                side: const BorderSide(
-                                  color: Colors.black,
-                                  width: 2.0,
-                                ),
+              flex: 1,
+              child: Container(
+                child: Column(
+                  children: [
+                    (tamanho.width > 600)
+                        ? Expanded(
+                            flex: 2,
+                            child: Container(
+                              child: Image.asset(
+                                'assets/images/eu.jpg',
                               ),
-                              minimumSize: const Size(80, 60),
-                              maximumSize: const Size(250, 80),
                             ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Acessar Tecnologias',
-                                  style: (tamanho.width > 600)
-                                      ? const TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 18,
-                                        )
-                                      : const TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 13,
-                                        ),
-                                ),
-                                (tamanho.width > 600)
-                                    ? const FaIcon(
-                                        FontAwesomeIcons.arrowRight,
-                                        size: 20,
-                                        color: Colors.black,
-                                      )
-                                    : const FaIcon(
-                                        FontAwesomeIcons.arrowRight,
-                                        size: 12,
-                                        color: Colors.black,
-                                      ),
-                              ],
+                          )
+                        : Expanded(
+                            flex: 1,
+                            child: Container(
+                              child: Image.asset(
+                                'assets/images/eu.jpg',
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Flexible(
-                          flex: 1,
-                          child: Text(
-                            "Entre em contato comigo!",
-                            style: (tamanho.width > 600)
-                                ? const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500,
-                                  )
-                                : const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Column(
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => const TecnologiasPage()),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            elevation: 5,
+                            // foregroundColor: Colors.black,
+                            // backgroundColor: Colors.greenAccent,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                              side: const BorderSide(
+                                color: Colors.black,
+                                width: 2.0,
+                              ),
+                            ),
+                            minimumSize: const Size(80, 60),
+                            maximumSize: const Size(250, 80),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Flexible(
-                          flex: 2,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: const Color.fromARGB(255, 49, 42, 85),
-                                  borderRadius: BorderRadius.circular(50),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.5),
-                                      spreadRadius: 1,
-                                      blurRadius: 4,
-                                      offset: const Offset(0, 3),
-                                    ),
-                                  ],
-                                ),
-                                child: IconButton(
-                                  onPressed: () {
-                                    _launchUrl(_urlGit);
-                                  },
-                                  icon: const FaIcon(
-                                    FontAwesomeIcons.github,
-                                    color: Colors.black,
-                                  ),
-                                ),
+                              Text(
+                                'Acessar Tecnologias',
+                                style: (tamanho.width > 600)
+                                    ? const TextStyle(
+                                        // color: Colors.black,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 18,
+                                      )
+                                    : const TextStyle(
+                                        // color: Colors.black,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 13,
+                                      ),
                               ),
                               const SizedBox(
                                 width: 8,
                               ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: const Color.fromARGB(255, 49, 42, 85),
-                                  borderRadius: BorderRadius.circular(50),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.5),
-                                      spreadRadius: 1,
-                                      blurRadius: 4,
-                                      offset: const Offset(0, 3),
+                              (tamanho.width > 600)
+                                  ? const FaIcon(
+                                      FontAwesomeIcons.arrowRight,
+                                      size: 20,
+                                      // color: Colors.black,
+                                    )
+                                  : const FaIcon(
+                                      FontAwesomeIcons.arrowRight,
+                                      size: 12,
+                                      // color: Colors.black,
                                     ),
-                                  ],
-                                ),
-                                child: IconButton(
-                                  onPressed: () {
-                                    _launchUrl(_urlLin);
-                                  },
-                                  icon: const FaIcon(
-                                    FontAwesomeIcons.linkedin,
-                                    color: Colors.blue,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: const Color.fromARGB(255, 49, 42, 85),
-                                  borderRadius: BorderRadius.circular(50),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.5),
-                                      spreadRadius: 1,
-                                      blurRadius: 4,
-                                      offset: const Offset(0, 3),
-                                    ),
-                                  ],
-                                ),
-                                child: IconButton(
-                                  onPressed: () {
-                                    _sendEmail();
-                                  },
-                                  icon: const FaIcon(
-                                    FontAwesomeIcons.envelope,
-                                    color: Colors.red,
-                                  ),
-                                ),
-                              ),
                             ],
                           ),
                         ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        //aqui vai ter contatos dps
                       ],
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Sobre",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 30,
-                        color: Colors.white),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  (tamanho.width > 600)
-                      ? Text(
-                          "Comecei a programar em 2017, no técnico em Mecatrônica, onde aprendi a programar em C. Em 2020, comecei a faculdade de Engenharia de Computação onde aprendi a programar em C++, Java, Python, entre outras linguagens. A faculdade me proporcionou um conhecimento mais aprofundado em lógica, programação, paradigmas, projetos, e me fez gostar ainda mais da área. \n\nAtualmente estou estudando Flutter, para desenvolvimento de aplicativos mobile. Pretendo me especializar em desenvolvimento mobile, e futuramente integrar o incrível framework Flutter com a área de IoT e visão computacional. \n\nMeu foco é aprender e aprimorar minhas habilidades, como usar o Flutter para desenvolver aplicativos para a web como este portfólio feito 100% em Flutter.",
-                          style: TextStyle(
-                            color: Colors.grey[300],
-                            fontSize: 16,
+              flex: 1,
+              child: Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    (tamanho.width > 600)
+                        ? const Text(
+                            "Sobre",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 40,
+                                color: Colors.white),
+                          )
+                        : const Text(
+                            "Sobre",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 28,
+                              color: Colors.white,
+                            ),
+                            textAlign: TextAlign.center,
                           ),
-                        )
-                      : const TextoVerMais(),
-                ],
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    (tamanho.width > 600)
+                        ? Text(
+                            "👋 Sou um estudante de Engenharia de Computação, apaixonado por tecnologia e inovação.\n\n💼 Estou em busca de uma oportunidade de estágio e estou disposto a atuar em qualquer área, pois aprendo rapidamente e me divirto durante o processo. \n\n👨‍💻 Atualmente, estou focado no estudo do Flutter para o desenvolvimento de aplicativos móveis, integrando-o com conhecimentos prévios em IoT e machine learning. \n\n📫 Este portfólio foi criado inteiramente em Flutter. Entre em contato comigo! ",
+                            style: TextStyle(
+                              color: Colors.grey[300],
+                              fontSize: 16,
+                            ),
+                          )
+                        : const TextoVerMais(),
+                  ],
+                ),
               ),
             ),
           ],
