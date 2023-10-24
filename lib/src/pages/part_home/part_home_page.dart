@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:portfolio_higor/src/pages/part_home/conteudo_home.dart';
-import 'package:portfolio_higor/src/widgets/nome_mexendo.dart';
 
 class PartHomePage extends StatefulWidget {
   const PartHomePage({super.key});
@@ -26,7 +25,7 @@ class _PartHomePageState extends State<PartHomePage> {
     return Container(
       padding: const EdgeInsets.only(left: 22, right: 22, bottom: 6, top: 20),
       height: altura,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.elliptical(250, 60),
           bottomRight: Radius.elliptical(250, 60),

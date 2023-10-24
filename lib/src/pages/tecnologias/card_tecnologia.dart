@@ -17,7 +17,11 @@ class CardWidget extends StatelessWidget {
         // color: const Color(0xFF413A69),
         color: Theme.of(context).colorScheme.onSecondary,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(18),
+          side: BorderSide(
+            color: Theme.of(context).colorScheme.secondary,
+            width: 2,
+          ),
         ),
         elevation: 3,
         child: Column(

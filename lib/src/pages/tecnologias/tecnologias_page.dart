@@ -8,8 +8,8 @@ class TecnologiasPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 12, right: 12, bottom: 6, top: 20),
-      height: MediaQuery.of(context).size.height + 50,
+      padding: const EdgeInsets.only(left: 12, right: 12, bottom: 18, top: 20),
+      height: MediaQuery.of(context).size.height + 40,
       width: double.infinity,
       decoration: const BoxDecoration(
           // color: Color(0xFF413A69),
@@ -50,7 +50,6 @@ class TecnologiasPage extends StatelessWidget {
               CardWidget(nome: "Figma", enderecoImagem: "figma-icon.svg"),
             ]),
           ),
-          Expanded(child: Spacer()),
         ],
       ),
     );

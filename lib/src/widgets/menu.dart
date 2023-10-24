@@ -33,32 +33,47 @@ class _MenuState extends State<Menu> {
         child: (tamanho.width > 600)
             ? Row(
                 children: [
-                  RichText(
-                    text: const TextSpan(
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
+                  // RichText(
+                  //   text: const TextSpan(
+                  //     style: TextStyle(
+                  //       fontSize: 18,
+                  //       fontWeight: FontWeight.w700,
+                  //     ),
+                  //     children: <TextSpan>[
+                  //       TextSpan(
+                  //         text: 'child:',
+                  //         style: TextStyle(
+                  //             color: Color.fromARGB(255, 175, 199, 187)),
+                  //       ),
+                  //       TextSpan(
+                  //         text: ' Text("',
+                  //         style: TextStyle(color: Colors.blueAccent),
+                  //       ),
+                  //       TextSpan(
+                  //         text: 'Higor Pereira',
+                  //         style: TextStyle(color: Colors.white),
+                  //       ),
+                  //       TextSpan(
+                  //         text: '")',
+                  //         style: TextStyle(color: Colors.blueAccent),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  AnimatedTextKit(
+                    animatedTexts: [
+                      TypewriterAnimatedText(
+                        "Higor Pereira",
+                        textStyle: const TextStyle(
+                          color: Colors.greenAccent,
+                          fontSize: 26,
+                          fontWeight: FontWeight.w800,
+                          overflow: TextOverflow.clip,
+                        ),
+                        speed: const Duration(milliseconds: 200),
                       ),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'child:',
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 175, 199, 187)),
-                        ),
-                        TextSpan(
-                          text: ' Text("',
-                          style: TextStyle(color: Colors.blueAccent),
-                        ),
-                        TextSpan(
-                          text: 'Higor Pereira',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        TextSpan(
-                          text: '")',
-                          style: TextStyle(color: Colors.blueAccent),
-                        ),
-                      ],
-                    ),
+                    ],
+                    repeatForever: true,
                   ),
                   Expanded(
                     flex: 3,

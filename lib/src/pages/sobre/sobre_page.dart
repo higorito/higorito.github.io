@@ -82,8 +82,10 @@ class SobrePage extends StatelessWidget {
                           },
                           style: ElevatedButton.styleFrom(
                             elevation: 5,
-                            // foregroundColor: Colors.black,
-                            // backgroundColor: Colors.greenAccent,
+                            foregroundColor:
+                                Theme.of(context).colorScheme.onSecondary,
+                            backgroundColor:
+                                Theme.of(context).colorScheme.secondary,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12.0),
                               side: const BorderSide(
@@ -103,12 +105,12 @@ class SobrePage extends StatelessWidget {
                                 style: (tamanho.width > 600)
                                     ? const TextStyle(
                                         // color: Colors.black,
-                                        fontWeight: FontWeight.w500,
+                                        fontWeight: FontWeight.bold,
                                         fontSize: 18,
                                       )
                                     : const TextStyle(
                                         // color: Colors.black,
-                                        fontWeight: FontWeight.w500,
+                                        fontWeight: FontWeight.bold,
                                         fontSize: 13,
                                       ),
                               ),

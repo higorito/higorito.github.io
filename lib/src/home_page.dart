@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_higor/src/pages/contatos/contatos/contatos_page.dart';
 import 'package:portfolio_higor/src/pages/part_home/part_home_page.dart';
+import 'package:portfolio_higor/src/pages/projetos/projetos_page.dart';
 import 'package:portfolio_higor/src/pages/sobre/sobre_page.dart';
 import 'package:portfolio_higor/src/pages/tecnologias/tecnologias_page.dart';
 import 'package:portfolio_higor/src/widgets/menu.dart';
@@ -51,8 +53,12 @@ class _HomePageState extends State<HomePage> {
                         key: keySecao2,
                       ),
                       const TecnologiasPage(),
-                      Secao(key: keySecao3, cor: Colors.green, altura: 1000),
-                      Secao(key: keySecao4, cor: Colors.yellow, altura: 1000),
+                      ProjetosPage(
+                        key: keySecao3,
+                      ),
+                      ContatosPage(
+                        key: keySecao4,
+                      ),
                     ],
                   ),
                 ),
