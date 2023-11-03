@@ -5,7 +5,6 @@ import 'package:portfolio_higor/src/pages/projetos/projetos_page.dart';
 import 'package:portfolio_higor/src/pages/sobre/sobre_page.dart';
 import 'package:portfolio_higor/src/pages/tecnologias/tecnologias_page.dart';
 import 'package:portfolio_higor/src/widgets/menu.dart';
-import 'package:portfolio_higor/src/widgets/secao.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

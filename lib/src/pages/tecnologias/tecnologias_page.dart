@@ -46,7 +46,7 @@ class TecnologiasPage extends StatelessWidget {
                   enderecoImagem: "Scikit_learn_logo_small.svg"),
               CardWidget(nome: "Linux", enderecoImagem: "linux-original.svg"),
               CardWidget(nome: "Git", enderecoImagem: "git-scm-icon.svg"),
-              CardWidget(nome: "PHP", enderecoImagem: "php-original.svg"),
+              CardWidget(nome: "Github", enderecoImagem: "github-icon.svg"),
               CardWidget(nome: "Figma", enderecoImagem: "figma-icon.svg"),
             ]),
           ),

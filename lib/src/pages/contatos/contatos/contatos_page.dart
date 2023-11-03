@@ -13,7 +13,7 @@ class ContatosPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(left: 12, right: 12, bottom: 6, top: 20),
-      height: MediaQuery.of(context).size.height,
+      height: MediaQuery.of(context).size.height - 50,
       width: double.infinity,
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -57,40 +57,73 @@ class ContatosPage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              IconButton(
-                onPressed: () {
-                  _launchUrl(_urlLin);
-                },
-                icon: FaIcon(
-                  FontAwesomeIcons.linkedin,
-                  size: 60,
-                  color: Theme.of(context).colorScheme.secondary,
+              Container(
+                padding: const EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.secondary,
+                    width: 2,
+                  ),
+                  color: Theme.of(context).colorScheme.background,
+                ),
+                child: IconButton(
+                  onPressed: () {
+                    _launchUrl(_urlLin);
+                  },
+                  icon: FaIcon(
+                    FontAwesomeIcons.linkedin,
+                    size: 60,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
                 ),
               ),
               const SizedBox(
                 width: 20,
               ),
-              IconButton(
-                onPressed: () {
-                  _launchUrl(_urlGit);
-                },
-                icon: FaIcon(
-                  FontAwesomeIcons.githubAlt,
-                  size: 60,
-                  color: Theme.of(context).colorScheme.secondary,
+              Container(
+                padding: const EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.secondary,
+                    width: 2,
+                  ),
+                  color: Theme.of(context).colorScheme.background,
+                ),
+                child: IconButton(
+                  onPressed: () {
+                    _launchUrl(_urlGit);
+                  },
+                  icon: FaIcon(
+                    FontAwesomeIcons.githubAlt,
+                    size: 60,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
                 ),
               ),
               const SizedBox(
                 width: 20,
               ),
-              IconButton(
-                onPressed: () {
-                  abrirGmail();
-                },
-                icon: FaIcon(
-                  FontAwesomeIcons.envelope,
-                  size: 60,
-                  color: Theme.of(context).colorScheme.secondary,
+              Container(
+                padding: const EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.secondary,
+                    width: 2,
+                  ),
+                  color: Theme.of(context).colorScheme.background,
+                ),
+                child: IconButton(
+                  onPressed: () {
+                    abrirGmail();
+                  },
+                  icon: FaIcon(
+                    FontAwesomeIcons.envelope,
+                    size: 60,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
                 ),
               ),
             ],
@@ -101,12 +134,12 @@ class ContatosPage extends StatelessWidget {
           const Expanded(
             child: Spacer(),
           ),
-          const Expanded(
+          Expanded(
             child: Text(
               "Foi um prazer ter você aqui!",
               style: TextStyle(
                 fontSize: 22,
-                // color: Theme.of(context).colorScheme.secondary,
+                color: Theme.of(context).colorScheme.background,
               ),
             ),
           ),

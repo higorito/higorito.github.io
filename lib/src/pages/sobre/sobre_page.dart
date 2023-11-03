@@ -162,7 +162,7 @@ class SobrePage extends StatelessWidget {
                       height: 20,
                     ),
                     (tamanho.width > 600)
-                        ? Text(
+                        ? const Text(
                             "👋 Sou um estudante de Engenharia de Computação, apaixonado por tecnologia e inovação.\n\n💼 Estou em busca de uma oportunidade de estágio e estou disposto a atuar em qualquer área, pois aprendo rapidamente e me divirto durante o processo. \n\n👨‍💻 Atualmente, estou focado no estudo do Flutter para o desenvolvimento de aplicativos móveis, integrando-o com conhecimentos prévios em IoT e machine learning. \n\n📫 Este portfólio foi criado inteiramente em Flutter. Entre em contato comigo! ",
                             style: TextStyle(
                               // color: Colors.grey[300],

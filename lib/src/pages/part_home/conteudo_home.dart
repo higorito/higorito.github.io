@@ -1,12 +1,14 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:lottie/lottie.dart';
-import 'package:path_provider/path_provider.dart';
+
 import 'package:portfolio_higor/src/widgets/nome_mexendo.dart';
-import 'package:universal_html/html.dart' as html;
+
 import 'package:url_launcher/url_launcher.dart';
+
+import 'dart:io';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:path_provider/path_provider.dart';
 
 class ConteudoHome extends StatelessWidget {
   const ConteudoHome({super.key});
@@ -65,26 +67,7 @@ class ConteudoHome extends StatelessWidget {
               Expanded(
                 child: ElevatedButton(
                   onPressed: () async {
-                    // Carregue o arquivo PDF da pasta "assets"
-                    final ByteData data =
-                        await rootBundle.load('assets/cv/cvHigorPereira.pdf');
-                    final List<int> bytes = data.buffer.asUint8List();
-
-                    // Obtenha o diretório de documentos
-                    final appDocDir = await getApplicationDocumentsDirectory();
-
-                    // Crie um novo arquivo no diretório de documentos
-                    final pdfFile =
-                        File('${appDocDir.path}/cvHigorPereira.pdf');
-
-                    // Escreva os bytes do arquivo PDF no novo arquivo
-                    await pdfFile.writeAsBytes(bytes, flush: true);
-
-                    // Abra o novo arquivo para download
-                    final url = pdfFile.uri.toString();
-                    html.AnchorElement(href: url)
-                      ..setAttribute("download", "cvHigorPereira.pdf")
-                      ..click();
+                    await downloadPDF();
                   },
                   style: ElevatedButton.styleFrom(
                     elevation: 3,
@@ -172,6 +155,28 @@ class ConteudoHome extends StatelessWidget {
       await launchUrl(Uri.parse(url));
     } else {
       debugPrint('Could not launch $url');
+    }
+  }
+
+  Future<void> downloadPDF() async {
+    const fileName =
+        '/cv/cvHigorPereira.pdf'; // Nome do arquivo PDF na pasta "assets"
+
+    // Obter o caminho da pasta de documentos do dispositivo
+    final documentsDirectory = await getApplicationDocumentsDirectory();
+
+    // Construir o caminho de destino do arquivo PDF na pasta de documentos
+    final filePath = '${documentsDirectory.path}/$fileName';
+
+    // Verificar se o arquivo já existe na pasta de documentos
+    final file = File(filePath);
+    if (await file.exists()) {
+      print('O arquivo PDF já existe em $filePath');
+    } else {
+      final data = await rootBundle.load('assets/$fileName');
+      final bytes = data.buffer.asUint8List();
+      await file.writeAsBytes(bytes, flush: true);
+      print('O arquivo PDF foi copiado para $filePath');
     }
   }
 }

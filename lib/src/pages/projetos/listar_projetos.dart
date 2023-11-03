@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ListarProjetos extends StatelessWidget {
   const ListarProjetos({super.key});
@@ -15,37 +16,55 @@ class CarouselDemo extends StatelessWidget {
     {
       "name": "Eletrônica Fácil",
       "image": "assets/images/eletronica_facil.png",
-      "link": "https://github.com/higorito",
+      "link": "https://github.com/higorito/eletronica-facil",
       "descricao":
           "Usei o flutter para criar um app que facilita a vida de quem está começando na eletrônica. O app reconhece componentes eletrônicos e fala o nome dele."
     },
     {
       "name": "Tflitev2",
       "image": "assets/images/tflitev2.png",
-      "link": "https://github.com/higorito",
-      "descricao": "aaaa",
+      "link": "https://github.com/higorito/tflitev2",
+      "descricao": "Utilizei o Tflite para criar um app que reconhece objetos.",
+    },
+    {
+      "name": "Alcool ou Gasolina",
+      "image": "assets/images/alcoolGasolina.png",
+      "link": "https://github.com/higorito/alcoolgasolina",
+      "descricao":
+          "App simples para calcular se é melhor abastacer com alcool ou gasolina.",
     },
     {
       "name": "Gerador de Cachorros",
       "image": "assets/images/gerar_dog.png",
-      "link": "https://github.com/higorito",
-      "descricao": "aaaa",
+      "link": "https://github.com/higorito/cachorros-ge",
+      "descricao":
+          "Usando o cubit para atualizar a tela. E fazendo um servidor em Dart",
     },
     {
-      "name": "jogo",
+      "name": "Artigo usando RNA",
+      "image": "assets/images/RNA.png",
+      "link": "https://github.com/higorito/trab-topicos",
+      "descricao":
+          "Avaliação de uma Rede Neural Artificial como Estimador de Casos de Dengue em Bambuí-MG",
+    },
+    {
+      "name": "Jogo de Plataforma",
       "image": "assets/images/printJoguin.png",
-      "link": "https://github.com/higorito",
-      "descricao": "aaaa",
+      "link": "https://github.com/higorito/godotJoguinhoTestes",
+      "descricao": "Aprendendo um pouco de godot.",
     },
     {
       "name": "Notas",
       "image": "assets/images/notas.png",
-      "link": "https://github.com/higorito",
-      "descricao": "aaaa",
+      "link": "https://github.com/higorito/notas",
+      "descricao":
+          "CRUD com Flutter e Firebase. Anoto algumas coisas, bem funcional.",
     },
   ];
 
   CarouselController buttonCarouselController = CarouselController();
+
+  CarouselDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -72,13 +91,14 @@ class CarouselDemo extends StatelessWidget {
 class CardItem extends StatelessWidget {
   final Map<String, String> item;
 
-  CardItem({required this.item});
+  const CardItem({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
     var altura = MediaQuery.of(context).size.height;
     return Container(
       // height: altura * 0.8,
+      width: MediaQuery.of(context).size.width * 0.45,
       margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
       child: Card(
         elevation: 5,
@@ -88,12 +108,17 @@ class CardItem extends StatelessWidget {
               height: altura * 0.01,
             ),
             Expanded(
-              flex: 5,
-              child: Image.asset(
-                item['image']!,
-                // height: altura * 0.4,
-                // width: MediaQuery.of(context).size.width * 0.4,
-                fit: BoxFit.contain,
+              flex: 4,
+              child: GestureDetector(
+                child: Image.asset(
+                  item['image']!,
+                  // height: altura * 0.4,
+                  // width: MediaQuery.of(context).size.width * 0.4,
+                  fit: BoxFit.contain,
+                ),
+                onTap: () {
+                  _launchUrl(Uri.parse(item['link']!));
+                },
               ),
             ),
             Expanded(
@@ -124,5 +149,11 @@ class CardItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _launchUrl(Uri url) async {
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
   }
 }
