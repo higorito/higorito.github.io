@@ -64,11 +64,23 @@ class _TextoVerMaisState extends State<TextoVerMais> {
           ),
           const SizedBox(height: 20),
           ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>(
+                Theme.of(context).colorScheme.secondary,
+              ),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+              ),
+            ),
             onPressed: () {
               _showAlertDialog(context);
               _toggleVisibility();
             },
-            child: Text(_isVisible ? 'Ver Menos' : 'Ver Mais'),
+            child: Text(_isVisible ? 'Ver Menos' : 'Ver Mais',
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.onSecondary)),
           ),
         ],
       ),

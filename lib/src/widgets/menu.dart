@@ -10,7 +10,7 @@ import 'package:url_launcher/url_launcher.dart';
 class Menu extends StatefulWidget {
   final ValueChanged<int> onSelecionado;
 
-  Menu({super.key, required this.onSelecionado});
+  const Menu({super.key, required this.onSelecionado});
 
   @override
   State<Menu> createState() => _MenuState();
@@ -207,7 +207,7 @@ class _MenuState extends State<Menu> {
                         "Higor Pereira",
                         textStyle: const TextStyle(
                           color: Colors.greenAccent,
-                          fontSize: 24,
+                          fontSize: 22,
                           fontWeight: FontWeight.w800,
                           overflow: TextOverflow.clip,
                         ),
@@ -223,16 +223,18 @@ class _MenuState extends State<Menu> {
                         onPressed: () {
                           _launchUrl(_urlGit);
                         },
-                        icon: const FaIcon(
+                        icon: FaIcon(
                           FontAwesomeIcons.github,
+                          color: Theme.of(context).colorScheme.secondary,
                         ),
                       ),
                       IconButton(
                         onPressed: () {
                           _launchUrl(_urlLin);
                         },
-                        icon: const FaIcon(
+                        icon: FaIcon(
                           FontAwesomeIcons.linkedinIn,
+                          color: Theme.of(context).colorScheme.secondary,
                         ),
                       )
                     ],

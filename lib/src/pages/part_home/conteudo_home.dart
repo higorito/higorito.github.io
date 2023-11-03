@@ -17,6 +17,8 @@ class ConteudoHome extends StatelessWidget {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final tamanho = mediaQuery.size;
+    final Uri _urlCv = Uri.parse(
+        'https://drive.google.com/file/d/1hMeiUq-Hy_eFyheauf-gqIu8OwYYiztJ/view?usp=sharing');
     return Container(
       margin: const EdgeInsets.only(top: 40),
       child: Column(
@@ -67,7 +69,7 @@ class ConteudoHome extends StatelessWidget {
               Expanded(
                 child: ElevatedButton(
                   onPressed: () async {
-                    await downloadPDF();
+                    _launchUrl(_urlCv);
                   },
                   style: ElevatedButton.styleFrom(
                     elevation: 3,
@@ -177,6 +179,12 @@ class ConteudoHome extends StatelessWidget {
       final bytes = data.buffer.asUint8List();
       await file.writeAsBytes(bytes, flush: true);
       print('O arquivo PDF foi copiado para $filePath');
+    }
+  }
+
+  Future<void> _launchUrl(Uri url) async {
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
     }
   }
 }

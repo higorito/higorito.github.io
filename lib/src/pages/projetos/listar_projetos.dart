@@ -69,13 +69,15 @@ class CarouselDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var altura = MediaQuery.of(context).size.height;
+
+    var largura = MediaQuery.of(context).size.width;
     return CarouselSlider(
       carouselController: buttonCarouselController,
       options: CarouselOptions(
         height: altura,
         enlargeCenterPage: true,
         enableInfiniteScroll: true,
-        viewportFraction: 0.42,
+        viewportFraction: (largura > 600) ? 0.42 : 0.8,
       ),
       items: items.map((item) {
         return Builder(
@@ -96,9 +98,10 @@ class CardItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var altura = MediaQuery.of(context).size.height;
+    var largura = MediaQuery.of(context).size.width;
     return Container(
       // height: altura * 0.8,
-      width: MediaQuery.of(context).size.width * 0.45,
+
       margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
       child: Card(
         elevation: 5,
@@ -121,27 +124,28 @@ class CardItem extends StatelessWidget {
                 },
               ),
             ),
+            const SizedBox(height: 12),
             Expanded(
+              flex: 1,
+              child: Text(
+                item['name']!,
+                style: TextStyle(
+                  fontSize: (altura > 600) ? 20.0 : 14.0,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            const SizedBox(height: 6),
+            Expanded(
+              flex: 1,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Text(
-                      item['name']!,
-                      style: const TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      item['descricao']!,
-                      style: TextStyle(
-                        fontSize: (altura < 600) ? 10.0 : 14.0,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
+                child: Text(
+                  item['descricao']!,
+                  style: TextStyle(
+                    fontSize: (altura > 600) ? 16.0 : 12.0,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
             ),

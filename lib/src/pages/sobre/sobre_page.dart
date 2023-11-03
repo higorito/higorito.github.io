@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_higor/src/pages/sobre/texto_ver_mais.dart';
-import 'package:portfolio_higor/src/pages/tecnologias/tecnologias_page.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 
 class SobrePage extends StatelessWidget {
-  const SobrePage({super.key});
+  SobrePage({super.key});
+
+  final Uri _urlCertificados = Uri.parse(
+      'https://drive.google.com/drive/u/1/folders/1QbL0rqs8zp3uNkZY78tOOO3ncaBoieRW');
 
   @override
   Widget build(BuildContext context) {
@@ -66,74 +69,74 @@ class SobrePage extends StatelessWidget {
                     ),
                     Column(
                       children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) => const TecnologiasPage()),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            elevation: 5,
-                            foregroundColor:
-                                Theme.of(context).colorScheme.onSecondary,
-                            backgroundColor:
-                                Theme.of(context).colorScheme.secondary,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12.0),
-                              side: const BorderSide(
-                                color: Colors.black,
-                                width: 2.0,
-                              ),
-                            ),
-                            minimumSize: const Size(80, 60),
-                            maximumSize: const Size(250, 80),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Acessar Tecnologias',
-                                style: (tamanho.width > 600)
-                                    ? const TextStyle(
-                                        // color: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18,
-                                      )
-                                    : const TextStyle(
-                                        // color: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 13,
-                                      ),
-                              ),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              (tamanho.width > 600)
-                                  ? const FaIcon(
-                                      FontAwesomeIcons.arrowRight,
-                                      size: 20,
-                                      // color: Colors.black,
-                                    )
-                                  : const FaIcon(
-                                      FontAwesomeIcons.arrowRight,
-                                      size: 12,
-                                      // color: Colors.black,
+                        (tamanho.width > 600)
+                            ? ElevatedButton(
+                                onPressed: () {
+                                  _launchUrl(_urlCertificados);
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  elevation: 5,
+                                  foregroundColor:
+                                      Theme.of(context).colorScheme.onSecondary,
+                                  backgroundColor:
+                                      Theme.of(context).colorScheme.secondary,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    side: const BorderSide(
+                                      color: Colors.black,
+                                      width: 2.0,
                                     ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
+                                  ),
+                                  minimumSize: const Size(80, 60),
+                                  maximumSize: const Size(250, 80),
+                                ),
+                                child: Row(
+                                  // mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Acessar Certificados',
+                                      style: (tamanho.width > 600)
+                                          ? const TextStyle(
+                                              // color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 18,
+                                            )
+                                          : const TextStyle(
+                                              // color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 8,
+                                            ),
+                                    ),
+                                    const SizedBox(
+                                      width: 2,
+                                    ),
+                                    (tamanho.width > 600)
+                                        ? const FaIcon(
+                                            FontAwesomeIcons.arrowRight,
+                                            size: 20,
+                                            // color: Colors.black,
+                                          )
+                                        : const FaIcon(
+                                            FontAwesomeIcons.arrowRight,
+                                            size: 8,
+                                            // color: Colors.black,
+                                          ),
+                                  ],
+                                ),
+                              )
+                            : const SizedBox(
+                                height: 8,
+                              ),
                         //aqui vai ter contatos dps
                       ],
                     ),
                   ],
                 ),
               ),
+            ),
+            const SizedBox(
+              width: 12,
             ),
             Expanded(
               flex: 1,
@@ -142,21 +145,24 @@ class SobrePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     (tamanho.width > 600)
-                        ? const Text(
-                            "Sobre",
-                            style: TextStyle(
+                        ? Center(
+                            child: const Text(
+                              "Sobre",
+                              style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 40,
-                                color: Colors.white),
-                          )
-                        : const Text(
-                            "Sobre",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 28,
-                              color: Colors.white,
+                              ),
                             ),
-                            textAlign: TextAlign.center,
+                          )
+                        : Center(
+                            child: const Text(
+                              "Sobre",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 28,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                     const SizedBox(
                       height: 20,

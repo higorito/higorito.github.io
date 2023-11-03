@@ -15,8 +15,12 @@ class _DropdownMenuCustomState extends State<DropdownMenuCustom> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton<int>(
-      dropdownColor: Colors.indigo,
+      dropdownColor: Theme.of(context).colorScheme.background,
       iconEnabledColor: Colors.greenAccent,
+      style: TextStyle(
+        color: Colors.grey[300],
+        fontSize: 18,
+      ),
       value: _valorSelecionado,
       onChanged: (valor) {
         setState(() {
@@ -29,7 +33,7 @@ class _DropdownMenuCustomState extends State<DropdownMenuCustom> {
           value: 1,
           child: Row(
             children: [
-              const Icon(Icons.home),
+              const Icon(Icons.home, color: Colors.greenAccent),
               Text(
                 'Home',
                 style: TextStyle(
@@ -44,7 +48,7 @@ class _DropdownMenuCustomState extends State<DropdownMenuCustom> {
           value: 2,
           child: Row(
             children: [
-              const Icon(Icons.person),
+              const Icon(Icons.person, color: Colors.greenAccent),
               Text(
                 'Sobre',
                 style: TextStyle(
@@ -59,7 +63,7 @@ class _DropdownMenuCustomState extends State<DropdownMenuCustom> {
           value: 3,
           child: Row(
             children: [
-              const Icon(Icons.work),
+              const Icon(Icons.work, color: Colors.greenAccent),
               Text(
                 'Projetos',
                 style: TextStyle(
@@ -74,7 +78,7 @@ class _DropdownMenuCustomState extends State<DropdownMenuCustom> {
           value: 4,
           child: Row(
             children: [
-              const Icon(Icons.mail),
+              const Icon(Icons.mail, color: Colors.greenAccent),
               Text(
                 'Contato',
                 style: TextStyle(

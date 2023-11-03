@@ -10,6 +10,8 @@ class CardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final tamanho = mediaQuery.size;
     return Container(
       margin: const EdgeInsets.all(8),
       child: Card(
@@ -30,15 +32,15 @@ class CardWidget extends StatelessWidget {
             SvgPicture.asset(
               "assets/icons/$enderecoImagem",
               fit: BoxFit.fill,
-              height: 50,
-              width: 50,
+              height: (tamanho.width > 600) ? 50.0 : 30.0,
+              width: (tamanho.width > 600) ? 50.0 : 30.0,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 nome,
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: (tamanho.width > 600) ? 20.0 : 14.0,
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).colorScheme.secondary,
                 ),

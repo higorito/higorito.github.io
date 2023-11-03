@@ -9,7 +9,7 @@ class TecnologiasPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(left: 12, right: 12, bottom: 18, top: 20),
-      height: MediaQuery.of(context).size.height + 40,
+      height: MediaQuery.of(context).size.height + 20,
       width: double.infinity,
       decoration: const BoxDecoration(
           // color: Color(0xFF413A69),

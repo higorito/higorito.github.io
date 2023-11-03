@@ -11,6 +11,7 @@ class PartHomePage extends StatefulWidget {
 
 class _PartHomePageState extends State<PartHomePage> {
   var verdeescuroseprecisar = "4F9C4E";
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);

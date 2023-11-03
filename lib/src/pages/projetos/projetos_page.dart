@@ -8,6 +8,8 @@ class ProjetosPage extends StatelessWidget {
   final Uri _urlGit = Uri.parse('https://github.com/higorito');
   @override
   Widget build(BuildContext context) {
+    var altura = MediaQuery.of(context).size.height;
+    var largura = MediaQuery.of(context).size.width;
     return Container(
       padding: const EdgeInsets.only(left: 12, right: 12, bottom: 6, top: 20),
       height: MediaQuery.of(context).size.height + 50,
