@@ -67,6 +67,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Theme.of(context).colorScheme.secondary,
           onPressed: () {
             scrollController.animateTo(
               0,
@@ -74,7 +75,8 @@ class _HomePageState extends State<HomePage> {
               curve: Curves.easeInOut,
             );
           },
-          child: const Icon(Icons.arrow_upward),
+          child: Icon(Icons.arrow_upward,
+              color: Theme.of(context).colorScheme.onSecondary),
         ));
   }
 

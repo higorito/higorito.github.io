@@ -21,9 +21,12 @@ class ProjetosPage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 40,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                // color: Colors.white,
               ),
             ),
+          ),
+          const SizedBox(
+            height: 16,
           ),
           Expanded(
             flex: 10,

@@ -1,6 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:portfolio_higor/src/widgets/nome_mexendo.dart';
+import 'package:universal_html/html.dart' as html;
+import 'package:url_launcher/url_launcher.dart';
 
 class ConteudoHome extends StatelessWidget {
   const ConteudoHome({super.key});
@@ -36,7 +42,7 @@ class ConteudoHome extends StatelessWidget {
           ),
           (tamanho.width > 600)
               ? const Text(
-                  "Eu sou um desenvolvedor mobile, com foco em Flutter, estou sempre em busca de novos conhecimentos e desafios. Aprendo rápido e me arrisco em novas tecnologias.",
+                  "Eu sou um desenvolvedor mobile, com foco em Flutter, estou sempre em busca de novos conhecimentos e desafios. Aprendo rápido e me arrisco em novas tecnologias. Venha conhecer um pouco mais sobre mim!",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -44,7 +50,7 @@ class ConteudoHome extends StatelessWidget {
                   ),
                 )
               : const Text(
-                  "Eu sou um desenvolvedor mobile, com foco em Flutter, estou sempre em busca de novos conhecimentos e desafios. Aprendo rápido e me arrisco em novas tecnologias.",
+                  "Eu sou um desenvolvedor mobile, com foco em Flutter, estou sempre em busca de novos conhecimentos e desafios. Aprendo rápido e me arrisco em novas tecnologias. Venha conhecer um pouco mais sobre mim!",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 12,
@@ -58,7 +64,28 @@ class ConteudoHome extends StatelessWidget {
             children: [
               Expanded(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    // Carregue o arquivo PDF da pasta "assets"
+                    final ByteData data =
+                        await rootBundle.load('assets/cv/cvHigorPereira.pdf');
+                    final List<int> bytes = data.buffer.asUint8List();
+
+                    // Obtenha o diretório de documentos
+                    final appDocDir = await getApplicationDocumentsDirectory();
+
+                    // Crie um novo arquivo no diretório de documentos
+                    final pdfFile =
+                        File('${appDocDir.path}/cvHigorPereira.pdf');
+
+                    // Escreva os bytes do arquivo PDF no novo arquivo
+                    await pdfFile.writeAsBytes(bytes, flush: true);
+
+                    // Abra o novo arquivo para download
+                    final url = pdfFile.uri.toString();
+                    html.AnchorElement(href: url)
+                      ..setAttribute("download", "cvHigorPereira.pdf")
+                      ..click();
+                  },
                   style: ElevatedButton.styleFrom(
                     elevation: 3,
                     foregroundColor: Colors.black,
@@ -86,7 +113,9 @@ class ConteudoHome extends StatelessWidget {
               ),
               Expanded(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    abrirGmail();
+                  },
                   style: ElevatedButton.styleFrom(
                     elevation: 3,
                     foregroundColor: Colors.white,
@@ -130,5 +159,19 @@ class ConteudoHome extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void abrirGmail() async {
+    final Uri params = Uri(
+      scheme: 'mailto',
+      path: 'higorps198@gmail.com',
+      query: 'subject=Reportar&body=Vou te contratar rs ',
+    );
+    String url = params.toString();
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      debugPrint('Could not launch $url');
+    }
   }
 }

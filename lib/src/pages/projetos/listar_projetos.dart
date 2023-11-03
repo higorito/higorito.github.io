@@ -12,9 +12,37 @@ class ListarProjetos extends StatelessWidget {
 
 class CarouselDemo extends StatelessWidget {
   final List<Map<String, String>> items = [
-    {"name": "Eletrônica Fácil", "image": "assets/images/eletronica_facil.png"},
-    {"name": "Tflitev2", "image": "assets/images/tflitev2.png"},
-    {"name": "Gerador de Cachorros", "image": "assets/images/gerar_dog.png"},
+    {
+      "name": "Eletrônica Fácil",
+      "image": "assets/images/eletronica_facil.png",
+      "link": "https://github.com/higorito",
+      "descricao":
+          "Usei o flutter para criar um app que facilita a vida de quem está começando na eletrônica. O app reconhece componentes eletrônicos e fala o nome dele."
+    },
+    {
+      "name": "Tflitev2",
+      "image": "assets/images/tflitev2.png",
+      "link": "https://github.com/higorito",
+      "descricao": "aaaa",
+    },
+    {
+      "name": "Gerador de Cachorros",
+      "image": "assets/images/gerar_dog.png",
+      "link": "https://github.com/higorito",
+      "descricao": "aaaa",
+    },
+    {
+      "name": "jogo",
+      "image": "assets/images/printJoguin.png",
+      "link": "https://github.com/higorito",
+      "descricao": "aaaa",
+    },
+    {
+      "name": "Notas",
+      "image": "assets/images/notas.png",
+      "link": "https://github.com/higorito",
+      "descricao": "aaaa",
+    },
   ];
 
   CarouselController buttonCarouselController = CarouselController();
@@ -56,6 +84,9 @@ class CardItem extends StatelessWidget {
         elevation: 5,
         child: Column(
           children: <Widget>[
+            SizedBox(
+              height: altura * 0.01,
+            ),
             Expanded(
               flex: 5,
               child: Image.asset(
@@ -79,7 +110,7 @@ class CardItem extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      "Descrição do projeto aqui Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                      item['descricao']!,
                       style: TextStyle(
                         fontSize: (altura < 600) ? 10.0 : 14.0,
                         fontWeight: FontWeight.w400,

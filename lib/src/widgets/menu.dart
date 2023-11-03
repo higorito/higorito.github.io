@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_higor/main.dart';
 import 'package:portfolio_higor/src/home_page.dart';
@@ -63,7 +64,7 @@ class _MenuState extends State<Menu> {
                   AnimatedTextKit(
                     animatedTexts: [
                       TypewriterAnimatedText(
-                        "Higor Pereira",
+                        "< Higor Pereira />",
                         textStyle: const TextStyle(
                           color: Colors.greenAccent,
                           fontSize: 26,
@@ -84,43 +85,90 @@ class _MenuState extends State<Menu> {
                             onPressed: () => widget.onSelecionado(1),
                             child: const Text(
                               'Home',
-                              style: TextStyle(fontSize: 18),
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.greenAccent,
+                              ),
                             )),
                         TextButton(
                             onPressed: () => widget.onSelecionado(2),
                             child: const Text(
                               'Sobre',
-                              style: TextStyle(fontSize: 18),
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.greenAccent,
+                              ),
                             )),
                         TextButton(
                             onPressed: () => widget.onSelecionado(3),
                             child: const Text(
                               'Projetos',
-                              style: TextStyle(fontSize: 18),
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.greenAccent,
+                              ),
                             )),
                         TextButton(
                             onPressed: () => widget.onSelecionado(4),
                             child: const Text(
                               'Contato',
-                              style: TextStyle(fontSize: 18),
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.greenAccent,
+                              ),
                             )),
-                        IconButton(
-                          onPressed: () {
-                            // Alterar o tema aqui
-                            if (Theme.of(context).brightness ==
-                                Brightness.light) {
-                              // Mudar para o tema escuro
-                              ThemeManager.changeTheme(ThemeData.dark());
-                            } else {
-                              // Mudar para o tema claro
-                              ThemeManager.changeTheme(ThemeData.light());
-                            }
+                        // IconButton(
+                        //   onPressed: () {
+                        //     // Alterar o tema aqui
+                        //     if (Theme.of(context).brightness ==
+                        //         Brightness.light) {
+                        //       // Mudar para o tema escuro
+                        //       ThemeManager.changeTheme(ThemeData.dark());
+                        //     } else {
+                        //       // Mudar para o tema claro
+                        //       ThemeManager.changeTheme(ThemeData.light());
+                        //     }
+                        //   },
+                        //   icon: Theme.of(context).brightness == Brightness.light
+                        //       ? FaIcon(
+                        //           FontAwesomeIcons.moon,
+                        //           color: Colors.black,
+                        //         )
+                        //       : FaIcon(
+                        //           FontAwesomeIcons.sun,
+                        //           color:
+                        //               Theme.of(context).colorScheme.secondary,
+                        //         ),
+                        // )
+                        FlutterSwitch(
+                          width: 80.0,
+                          height: 35.0,
+                          toggleSize: 45.0,
+                          value: isDarkTheme,
+                          borderRadius: 30.0,
+                          padding: 8.0,
+                          inactiveColor: Colors.grey[900]!,
+                          activeColor: Colors.grey[400]!,
+                          activeIcon: const Icon(
+                            Icons.wb_sunny,
+                            color: Colors.yellow,
+                          ),
+                          inactiveIcon: const Icon(
+                            Icons.nightlight_round,
+                            color: Colors.black,
+                          ),
+                          onToggle: (val) {
+                            setState(() {
+                              isDarkTheme = val;
+                              if (isDarkTheme) {
+                                ThemeManager.changeTheme(ThemeData.dark());
+                              } else {
+                                ThemeManager.changeTheme(ThemeData.light());
+                              }
+                              // print(isDarkTheme)
+                            });
                           },
-                          icon: Icon(
-                              Theme.of(context).brightness == Brightness.light
-                                  ? Icons.nightlight_round
-                                  : Icons.wb_sunny),
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -131,17 +179,18 @@ class _MenuState extends State<Menu> {
                         onPressed: () {
                           _launchUrl(_urlGit);
                         },
-                        icon: const FaIcon(
+                        icon: FaIcon(
                           FontAwesomeIcons.github,
+                          color: Theme.of(context).colorScheme.secondary,
                         ),
                       ),
                       IconButton(
                         onPressed: () {
                           _launchUrl(_urlLin);
                         },
-                        icon: const FaIcon(
+                        icon: FaIcon(
                           FontAwesomeIcons.linkedinIn,
-                          //
+                          color: Theme.of(context).colorScheme.secondary,
                         ),
                       )
                     ],
@@ -174,7 +223,7 @@ class _MenuState extends State<Menu> {
                         onPressed: () {
                           _launchUrl(_urlGit);
                         },
-                        icon: FaIcon(
+                        icon: const FaIcon(
                           FontAwesomeIcons.github,
                         ),
                       ),

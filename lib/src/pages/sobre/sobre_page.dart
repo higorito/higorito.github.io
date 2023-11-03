@@ -5,10 +5,7 @@ import 'package:portfolio_higor/src/pages/tecnologias/tecnologias_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SobrePage extends StatelessWidget {
-  SobrePage({super.key});
-
-  final Uri _urlGit = Uri.parse('https://github.com/higorito');
-  final Uri _urlLin = Uri.parse('linkedin.com/in/higor-pereira-comp/');
+  const SobrePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +28,12 @@ class SobrePage extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           // color: const Color(0xFF484175),
-          boxShadow: [
-            BoxShadow(
-              // color: Colors.black.withOpacity(0.6),
-              color: Theme.of(context).colorScheme.onSecondary,
-              spreadRadius: 1,
-              blurRadius: 2,
-              offset: const Offset(0, 2),
-            ),
-          ],
+          color: Theme.of(context).colorScheme.onSecondary,
+          border: Border.all(
+            color: Theme.of(context).colorScheme.secondary,
+            width: 2,
+            style: BorderStyle.solid,
+          ),
         ),
         padding: const EdgeInsets.all(20),
         child: Row(
@@ -171,7 +165,7 @@ class SobrePage extends StatelessWidget {
                         ? Text(
                             "👋 Sou um estudante de Engenharia de Computação, apaixonado por tecnologia e inovação.\n\n💼 Estou em busca de uma oportunidade de estágio e estou disposto a atuar em qualquer área, pois aprendo rapidamente e me divirto durante o processo. \n\n👨‍💻 Atualmente, estou focado no estudo do Flutter para o desenvolvimento de aplicativos móveis, integrando-o com conhecimentos prévios em IoT e machine learning. \n\n📫 Este portfólio foi criado inteiramente em Flutter. Entre em contato comigo! ",
                             style: TextStyle(
-                              color: Colors.grey[300],
+                              // color: Colors.grey[300],
                               fontSize: 16,
                             ),
                           )
